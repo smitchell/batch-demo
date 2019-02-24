@@ -1,0 +1,27 @@
+eureka:
+  client:
+    enabled: false
+
+security:
+  user:
+    password: '****************'
+
+server:
+  port: 0
+
+spring:
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE
+  batch:
+    job:
+      enabled: false
+  main:
+    banner-mode: 'off'
+  output:
+    ansi:
+      enabled: ALWAYS
+  profiles:
+    active: test
+  zipkin:
+    enabled: false
