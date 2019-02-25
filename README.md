@@ -1,4 +1,4 @@
-# Spring Boot/JPA/SBatch Demo
+# Spring Boot/JPA/Batch Demo
 ### Purpose
 This project was created as my test harness modeling work
 projects that use Spring Boot, Cloud, JPA, and Batch.
