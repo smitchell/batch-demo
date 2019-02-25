@@ -6,6 +6,3 @@ spring:
     config:
       enabled: false
       override-none: true
-
-batch:
-  cron-expression: '0 23 * * * ?'

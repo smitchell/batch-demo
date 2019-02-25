@@ -17,8 +17,31 @@ See https://network.pivotal.io/products/pcfdev).
 1. cf login
 2. mvn clean install
 3. cf push -f cloudfoundry/manifest.yml -p target/batch-demo-0-SNAPSHOT.jar
-4. cf logs batch-demo --recent
+4. cf logs batch-demo --recent 
+5. Repeat step 4 as needed to see Batch logging.
+6. cf stop batch-demo
 
+You may temporarily want to change the frequency of the batch job by editing this property in application.yml.
 
+```cron-expression: '0 23 * * * ?'```
+
+This example above runs once a day. You can change that to once a minute to see more 
+activity in the logs. Don't leave the service running or you will fill-up the in
+member database (I really need to add a step to truncate the table each time it runs).
+
+```cron-expression: '0 * * * * ?'```
+
+Using the expression above, you'll see something like this in the logs
+
+```
+Cron Task :: Execution Time - 18:51:00
+Cron Task :: Execution Time - 18:52:00
+Cron Task :: Execution Time - 18:53:00
+```
+
+Each following by something like this:
+```
+Job: [FlowJob: [name=dailyLoanBalanceJob]] completed with the following parameters: [{}] and the following status: [COMPLETED]
+```
 
 
