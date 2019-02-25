@@ -1,4 +1,4 @@
-package com.byteworksinc.batchdemo.repository;
+package com.byteworksinc.batchdemo.batch.repository;
 
 import com.byteworksinc.batchdemo.domain.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;

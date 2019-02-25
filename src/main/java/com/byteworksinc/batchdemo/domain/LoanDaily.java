@@ -30,6 +30,9 @@ public class LoanDaily implements Serializable {
   @GenericGenerator(name = "uuid", strategy = "uuid2")
   private String id;
 
+  @Column(nullable = false, updatable = false)
+  private String loanId;
+
   @Temporal(TemporalType.TIMESTAMP)
   @Column(nullable = false, updatable = false)
   private Date asOfTime;

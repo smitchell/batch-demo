@@ -1,4 +1,4 @@
-package com.byteworksinc.batchdemo.repository;
+package com.byteworksinc.batchdemo.test.repository;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.StringContains.containsString;
@@ -8,10 +8,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.byteworksinc.batchdemo.batch.repository.LoanRepository;
 import com.byteworksinc.batchdemo.domain.Loan;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Random;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Assert;
