@@ -11,7 +11,7 @@ each loan at the close of the business each day.
 
 ### Running the Project
 
-This project can be deploy to your PCF Web Space or a Local PCF Dev environment ( 
+This project can be deployed to Pivotal Cloud Foundry (e.g. PCF or your local PCF Dev environment:  
 See https://network.pivotal.io/products/pcfdev).
 
 1. cf login
