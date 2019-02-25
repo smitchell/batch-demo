@@ -9,4 +9,16 @@ copies the Loan attributes to a LoanDaily record, and a JPA Writer to capture th
 each loan at the close of the business each day.
 
 
+### Running the Project
+
+This project can be deploy to your PCF Web Space or a Local PCF Dev environment ( 
+See https://network.pivotal.io/products/pcfdev).
+
+1. cf login
+2. mvn clean install
+3. cf push -f cloudfoundry/manifest.yml -p target/batch-demo-0-SNAPSHOT.jar
+4. cf logs batch-demo --recent
+
+
+
 

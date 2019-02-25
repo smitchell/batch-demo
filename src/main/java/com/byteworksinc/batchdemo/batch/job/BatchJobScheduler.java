@@ -24,7 +24,7 @@ public class BatchJobScheduler {
 
   @Autowired
   public BatchJobScheduler(JobLauncher jobLauncher, final Job dailyLoanBalanceJob) {
-    log.info("BatchJobScheduler()");
+    log.debug("BatchJobScheduler()");
     this.jobLauncher = jobLauncher;
     this.dailyLoanBalanceJob = dailyLoanBalanceJob;
   }
@@ -32,7 +32,7 @@ public class BatchJobScheduler {
   @Scheduled(cron = "${batch.cron-expression:0 23 * * * ?}")
   public void scheduleTaskWithCronExpression()
       throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
-    log.info("Cron Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
+    log.debug("Cron Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
         jobLauncher.run(dailyLoanBalanceJob, new JobParametersBuilder().toJobParameters());
   }
 

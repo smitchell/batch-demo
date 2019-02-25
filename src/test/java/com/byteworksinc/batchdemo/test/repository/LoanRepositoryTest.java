@@ -23,7 +23,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -51,7 +50,6 @@ public class LoanRepositoryTest {
   }
 
   @Test
-  @WithMockUser(username = "00000000-0000-0000-0000-000000000000")
   public void testAchTransaction() throws Exception {
     final Loan loan = generateLoan();
     String objectString = new ObjectMapper().writeValueAsString(loan);

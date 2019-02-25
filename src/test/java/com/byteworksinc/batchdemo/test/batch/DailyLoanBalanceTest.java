@@ -17,12 +17,9 @@ import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WithMockUser(username = "00000000-0000-0000-0000-000000000000")
 @SpringBootTest
 @ComponentScan("com.byteworksinc.batchdemo.test")
 public class DailyLoanBalanceTest {

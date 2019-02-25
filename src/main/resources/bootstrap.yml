@@ -1,3 +1,9 @@
-info:
-  build:
-    version: @project.version@
+spring:
+  batch:
+    job:
+      enabled: false
+  cloud:
+    config:
+      enabled: false
+      override-none: true
+

@@ -9,8 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableDiscoveryClient
 @EnableJpaAuditing
-@RefreshScope
-@EnableScheduling
 @SpringBootApplication
 public class Application {
 

@@ -1,0 +1,10 @@
+---
+applications:
+  - buildpack: https://github.com/cloudfoundry/java-buildpack.git
+    name: batch-demo
+    memory: 768m
+    path: ../target/batch-demo-0-SNAPSHOT.jar
+    random-route: true
+    services:
+      - discovery-service
+    timeout: 180

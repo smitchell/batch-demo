@@ -29,7 +29,7 @@ public class DailyLoanJob {
 
   @Bean
   public Job dailyLoanBalanceJob(JobBuilderFactory jobs, Step s1) {
-    log.info("dailyLoanBalanceJob <--- " + jobs + ", " + s1);
+    log.debug("dailyLoanBalanceJob <--- " + jobs + ", " + s1);
 
     return jobs.get("dailyLoanBalanceJob")
         .flow(s1)
@@ -39,7 +39,7 @@ public class DailyLoanJob {
 
   @Bean
   public JpaPagingItemReader<Loan> loanReader() throws Exception {
-    log.info("loanReader()");
+    log.debug("loanReader()");
     String jpqlQuery = "SELECT l FROM Loan l";
     JpaPagingItemReader<Loan> reader = new JpaPagingItemReader<>();
     reader.setQueryString(jpqlQuery);
@@ -54,7 +54,7 @@ public class DailyLoanJob {
   @Bean
   public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Loan> reader,
       ItemWriter<LoanDaily> writer, ItemProcessor<Loan, LoanDaily> processor) {
-    log.info("step1()");
+    log.debug("step1()");
     return stepBuilderFactory.get("step1")
         .<Loan, LoanDaily>chunk(1000)
         .reader(reader)
@@ -77,6 +77,7 @@ public class DailyLoanJob {
 
   @Bean
   public RepositoryItemWriter<LoanDaily> writer() {
+    log.debug("writer()");
     RepositoryItemWriter<LoanDaily> writer = new RepositoryItemWriter<>();
     writer.setRepository(loanDailyRepository);
     writer.setMethodName("save");

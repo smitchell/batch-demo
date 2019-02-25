@@ -23,5 +23,3 @@ spring:
       enabled: ALWAYS
   profiles:
     active: test
-  zipkin:
-    enabled: false
