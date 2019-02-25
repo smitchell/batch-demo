@@ -1,4 +1,4 @@
-package com.byteworksinc.repository;
+package com.byteworksinc.batchdemo.repository;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.StringContains.containsString;
@@ -9,9 +9,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.byteworksinc.batchdemo.domain.Loan;
-import com.byteworksinc.batchdemo.repository.LoanRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Assert;
@@ -61,7 +61,7 @@ public class LoanRepositoryTest {
             .content(objectString))
         .andExpect(status().is2xxSuccessful())
         .andExpect(header().string("Location", containsString(
-            "http://localhost:8080/organizations/"))) // Should be http://localhost/user/{valid-uuid}
+            "http://localhost/loans/"))) // Should be http://localhost/user/{valid-uuid}
         .andReturn();
 
     String loanId = create.getResponse().getHeader("Location")
@@ -75,7 +75,7 @@ public class LoanRepositoryTest {
         .andExpect(
             header().string(HttpHeaders.CONTENT_TYPE, MediaTypes.HAL_JSON_VALUE + ";charset=UTF-8"))
         .andExpect(jsonPath("$.loanNumber", is(loan.getLoanNumber())))
-        .andExpect(jsonPath("$.balance", is(loan.getBalance())))
+        .andExpect(jsonPath("$.balance", is(loan.getBalance().doubleValue())))
         .andExpect(jsonPath("$.status", is("ACTIVE")));
 
   }

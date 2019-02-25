@@ -1,4 +1,4 @@
-package com.byteworksinc;
+package com.byteworksinc.batchdemo.repository;
 
 import com.byteworksinc.batchdemo.Application;
 import java.util.ArrayList;
