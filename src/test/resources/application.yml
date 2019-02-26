@@ -1,6 +1,4 @@
-atch:
-  cron-expression: '0 * * * * ?'
-
+---
 eureka:
   client:
     enabled: false

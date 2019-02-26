@@ -11,7 +11,7 @@ import org.springframework.beans.BeanUtils;
 public class LoanProcessor implements ItemProcessor<Loan, LoanDaily> {
 
   @Override
-  public LoanDaily process(Loan source) throws Exception {
+  public LoanDaily process(Loan source) {
     log.debug("process() <--- " + source);
     final LoanDaily target = new LoanDaily();
     BeanUtils.copyProperties(source, target);

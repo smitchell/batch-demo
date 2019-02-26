@@ -1,15 +1,14 @@
+---
 info:
   build:
     version: @project.version@
-batch:
-  cron-expression: '0 23 * * * ?'
 eureka:
   client:
     enabled: true
 logging:
   level:
-    com.byteworksinc.batchdemo.Application: 'INFO'
-    com.byteworksinc.batchdemo.batch: 'DEBUG'
+    com.byteworksinc.batchdemo.Application: ERROR
+    com.byteworksinc.batchdemo.batch: DEBUG
 spring:
   datasource:
     platform: h2

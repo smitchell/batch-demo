@@ -21,17 +21,11 @@ See https://network.pivotal.io/products/pcfdev).
 5. Repeat step 4 as needed to see Batch logging.
 6. cf stop batch-demo
 
-You may temporarily want to change the frequency of the batch job by editing this property in application.yml.
+The batch job is set to run every minute:
 
-```cron-expression: '0 23 * * * ?'```
+```cron-expression: '1 * * * * ?'```
 
-This example above runs once a day. You can change that to once a minute to see more 
-activity in the logs. Don't leave the service running or you will fill-up the in
-member database (I really need to add a step to truncate the table each time it runs).
-
-```cron-expression: '0 * * * * ?'```
-
-Using the expression above, you'll see something like this in the logs
+You'll see something like this in the logs
 
 ```
 Cron Task :: Execution Time - 18:51:00

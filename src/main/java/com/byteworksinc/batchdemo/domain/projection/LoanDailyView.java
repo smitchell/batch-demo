@@ -7,6 +7,7 @@ import org.springframework.data.rest.core.config.Projection;
 
 @Projection(name = "loanDailyView", types = {LoanDaily.class})
 public interface LoanDailyView {
+
   String NAME = "loanDailyView";
 
   String getId();

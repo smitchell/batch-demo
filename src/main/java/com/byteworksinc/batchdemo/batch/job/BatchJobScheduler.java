@@ -17,7 +17,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class BatchJobScheduler {
-  private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+  private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+      .ofPattern("HH:mm:ss");
 
   private final JobLauncher jobLauncher;
   private final Job dailyLoanBalanceJob;
@@ -29,11 +31,11 @@ public class BatchJobScheduler {
     this.dailyLoanBalanceJob = dailyLoanBalanceJob;
   }
 
-  @Scheduled(cron = "${batch.cron-expression:0 23 * * * ?}")
+  @Scheduled(fixedDelay = 6000, initialDelay = 120000)
   public void scheduleTaskWithCronExpression()
       throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
     log.debug("Cron Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
-        jobLauncher.run(dailyLoanBalanceJob, new JobParametersBuilder().toJobParameters());
+    jobLauncher.run(dailyLoanBalanceJob, new JobParametersBuilder().toJobParameters());
   }
 
 }

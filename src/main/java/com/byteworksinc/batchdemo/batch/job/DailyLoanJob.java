@@ -1,8 +1,8 @@
 package com.byteworksinc.batchdemo.batch.job;
 
+import com.byteworksinc.batchdemo.batch.repository.LoanDailyRepository;
 import com.byteworksinc.batchdemo.domain.Loan;
 import com.byteworksinc.batchdemo.domain.LoanDaily;
-import com.byteworksinc.batchdemo.batch.repository.LoanDailyRepository;
 import javax.persistence.EntityManagerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -22,10 +22,21 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DailyLoanJob {
 
+  private final DailyLoanStepListener dailyLoanStepListener;
+
+  private final LoanDailyRepository loanDailyRepository;
+
+  private final EntityManagerFactory entityManagerFactory;
+
   @Autowired
-  private LoanDailyRepository loanDailyRepository;
-  @Autowired
-  private EntityManagerFactory entityManagerFactory;
+  public DailyLoanJob(
+      final DailyLoanStepListener dailyLoanStepListener,
+      final EntityManagerFactory entityManagerFactory,
+      final LoanDailyRepository loanDailyRepository) {
+    this.dailyLoanStepListener = dailyLoanStepListener;
+    this.entityManagerFactory = entityManagerFactory;
+    this.loanDailyRepository = loanDailyRepository;
+  }
 
   @Bean
   public Job dailyLoanBalanceJob(JobBuilderFactory jobs, Step s1) {
@@ -56,6 +67,7 @@ public class DailyLoanJob {
       ItemWriter<LoanDaily> writer, ItemProcessor<Loan, LoanDaily> processor) {
     log.debug("step1()");
     return stepBuilderFactory.get("step1")
+        .listener(dailyLoanStepListener)
         .<Loan, LoanDaily>chunk(1000)
         .reader(reader)
         .processor(processor)
@@ -63,13 +75,6 @@ public class DailyLoanJob {
         .build();
   }
 
-  /**
-   * The ItemProcessor is called after a new line is read and it allows the developer
-   * to transform the data read
-   * In our example it simply return the original object
-   *
-   * @return
-   */
   @Bean
   public ItemProcessor<Loan, LoanDaily> processor() {
     return new LoanProcessor();
