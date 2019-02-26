@@ -28,23 +28,24 @@ public class DailyLoanStepListener implements StepExecutionListener {
   @Override
   public ExitStatus afterStep(final StepExecution stepExecution) {
     log.debug("afterStep()");
-    StringBuilder sb = new StringBuilder("\nStepExecutionListener - afterStep\n");
-    sb.append("getCommitCount=").append(stepExecution.getCommitCount()).append("\n");
-    sb.append("getFilterCount=").append(stepExecution.getFilterCount()).append("\n");
-    sb.append("getProcessSkipCount=").append(stepExecution.getProcessSkipCount()).append("\n");
-    sb.append("getReadCount=").append(stepExecution.getReadCount()).append("\n");
-    sb.append("getReadSkipCount=").append(stepExecution.getReadSkipCount()).append("\n");
-    sb.append("getRollbackCount=").append(stepExecution.getRollbackCount()).append("\n");
-    sb.append("getWriteCount=").append(stepExecution.getWriteCount()).append("\n");
-    sb.append("getWriteSkipCount=").append(stepExecution.getWriteSkipCount()).append("\n");
-    sb.append("getStepName=").append(stepExecution.getStepName()).append("\n");
-    sb.append("getSummary=").append(stepExecution.getSummary()).append("\n");
-    sb.append("getStartTime=").append(stepExecution.getStartTime()).append("\n");
-    sb.append("getStartTime=").append(stepExecution.getEndTime()).append("\n");
-    sb.append("getLastUpdated=").append(stepExecution.getLastUpdated()).append("\n");
-    sb.append("getExitStatus=").append(stepExecution.getExitStatus()).append("\n");
-    sb.append("getFailureExceptions=").append(stepExecution.getFailureExceptions()).append("\n");
-    log.debug(sb.toString());
+    final String summary =
+        "StepExecutionListener - afterStep\n"
+            + "getCommitCount=" + stepExecution.getCommitCount() + "\n"
+            + "getFilterCount=" + stepExecution.getFilterCount() + "\n"
+            + "getProcessSkipCount=" + stepExecution.getProcessSkipCount() + "\n"
+            + "getReadCount=" + stepExecution.getReadCount() + "\n"
+            + "getReadSkipCount=" + stepExecution.getReadSkipCount() + "\n"
+            + "getRollbackCount=" + stepExecution.getRollbackCount() + "\n"
+            + "getWriteCount=" + stepExecution.getWriteCount() + "\n"
+            + "getWriteSkipCount=" + stepExecution.getWriteSkipCount() + "\n"
+            + "getStepName=" + stepExecution.getStepName() + "\n"
+            + "getSummary=" + stepExecution.getSummary() + "\n"
+            + "getStartTime=" + stepExecution.getStartTime() + "\n"
+            + "getStartTime=" + stepExecution.getEndTime() + "\n"
+            + "getLastUpdated=" + stepExecution.getLastUpdated() + "\n"
+            + "getExitStatus=" + stepExecution.getExitStatus() + "\n"
+            + "getFailureExceptions=" + stepExecution.getFailureExceptions();
+    log.debug(summary);
     return stepExecution.getExitStatus();
   }
 

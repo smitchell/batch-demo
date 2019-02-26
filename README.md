@@ -23,7 +23,9 @@ See https://network.pivotal.io/products/pcfdev).
 
 The batch job is set to run every minute:
 
-```cron-expression: '1 * * * * ?'```
+```@Scheduled(fixedDelay = 6000, initialDelay = 120000)```
+
+The initialDelay was added to prevent the scheduler from interferring with the JUnit tests.
 
 You'll see something like this in the logs
 
