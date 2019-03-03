@@ -1,7 +1,7 @@
 # Spring Boot/JPA/Batch Demo
 ### Purpose
 This project was created as my test harness modeling work
-projects that use Spring Boot, Cloud, JPA, and Batch.
+projects that use Spring Boot, JPA, and Batch.
 
 The premise, slightly contrived, is that a company has Loan records that need to be captured at 
 the end of each business day. There is a JPA Reader to fetch Loan records, a Processor that 
@@ -11,10 +11,13 @@ each loan at the close of the business each day.
 
 ### Running the Project
 
-This project can be deployed to Pivotal Cloud Foundry (e.g. PCF or your local PCF Dev environment:  
+This project can be deployed to Pivotal Cloud Foundry or PCF Dev.
+(e.g. PCF or your local PCF Dev environment:  
 See https://network.pivotal.io/products/pcfdev).
 
 1. cf login
+a) e.g. pcf dev - "cf login -a https://api.dev.cfdev.sh --skip-ssl-validation"
+b) e.g. pcf web - "cf login -a https://api.run.pivotal.io"
 2. mvn clean install
 3. cf push -f cloudfoundry/manifest.yml -p target/batch-demo-0-SNAPSHOT.jar
 4. cf logs batch-demo --recent 

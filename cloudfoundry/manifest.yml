@@ -5,6 +5,4 @@ applications:
     memory: 768m
     path: ../target/batch-demo-0-SNAPSHOT.jar
     random-route: true
-    services:
-      - discovery-service
     timeout: 180

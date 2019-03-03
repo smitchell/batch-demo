@@ -13,7 +13,6 @@ import com.byteworksinc.batchdemo.domain.Loan;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import java.util.Random;
-import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -83,7 +82,7 @@ public class LoanRepositoryTest {
     int min = 1;
     Random rand = new Random();
     final Loan loan = new Loan();
-    loan.setLoanNumber(RandomStringUtils.randomAlphabetic(10));
+    loan.setLoanNumber("abcdefg");
     loan.setBalance(BigDecimal.valueOf(rand.nextInt((max - min) + 1) + min));
     return loan;
   }
