@@ -2,6 +2,7 @@ package com.byteworksinc.batchdemo.batch.job;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -35,7 +36,7 @@ public class BatchJobScheduler {
   public void scheduleTaskWithCronExpression()
       throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
     log.debug("Cron Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
-    jobLauncher.run(dailyLoanBalanceJob, new JobParametersBuilder().toJobParameters());
+    jobLauncher.run(dailyLoanBalanceJob, new JobParametersBuilder().addDate("runDate", new Date()).toJobParameters());
   }
 
 }
