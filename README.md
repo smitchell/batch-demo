@@ -16,9 +16,7 @@ PCF Dev or PWS.
 
 ### Running the Project Locally
 
-If you use Intellij IDEA all you have to select the Application 
-class in the Project window and press Shift-F10, or open the Run menu and select 
-"Run BatchDemoApplication," or right-click the Application class and select 
+If you use Intellij IDEA, press Shift-F10, or open the Run menu and select 
 "Run BatchDemoApplication."
 
 ### Running the Project with Pivotal
