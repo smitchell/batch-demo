@@ -32,7 +32,7 @@ public class BatchJobScheduler {
     this.dailyLoanBalanceJob = dailyLoanBalanceJob;
   }
 
-  @Scheduled(fixedDelay = 6000, initialDelay = 120000)
+  @Scheduled(fixedDelay = 60000, initialDelay = 120000)
   public void scheduleTaskWithCronExpression()
       throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
     log.debug("Cron Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));

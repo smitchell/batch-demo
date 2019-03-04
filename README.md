@@ -1,5 +1,5 @@
 # Spring Boot/JPA/Batch Demo
-### Purpose
+## Purpose
 This project was created as my test harness modeling work
 projects that use Spring Boot, JPA, and Batch.
 
@@ -9,24 +9,35 @@ copies the Loan attributes to a LoanDaily record, and a JPA Writer to capture th
 each loan at the close of the business each day.
 
 
-### Running the Project
+## Running the Project
+
+The easist way to run this project is from your IDE, but you can also deploy to 
+PCF Dev or PWS.
+
+### Running the Project Locally
+
+If you use Intellij IDEA all you have to select the Application 
+class in the Project window and press Shift-F10, or open the Run menu and select 
+"Run BatchDemoApplication," or right-click the Application class and select 
+"Run BatchDemoApplication."
+
+### Running the Project with Pivotal
 
 This project can be deployed to Pivotal Cloud Foundry or PCF Dev.
-(e.g. PCF or your local PCF Dev environment:  
-See https://network.pivotal.io/products/pcfdev).
+(e.g. PCF or your local PCF Dev environment: see https://network.pivotal.io/products/pcfdev).
 
-1. cf login
-a) e.g. pcf dev - "cf login -a https://api.dev.cfdev.sh --skip-ssl-validation"
-b) e.g. pcf web - "cf login -a https://api.run.pivotal.io"
-2. mvn clean install
-3. cf push -f cloudfoundry/manifest.yml -p target/batch-demo-0-SNAPSHOT.jar
-4. cf logs batch-demo --recent 
-5. Repeat step 4 as needed to see Batch logging.
-6. cf stop batch-demo
+* cf login
+  * e.g. pcf dev - "cf login -a https://api.dev.cfdev.sh --skip-ssl-validation"
+  * e.g. pcf web - "cf login -a https://api.run.pivotal.io"
+* mvn clean install
+* cf push -f cloudfoundry/manifest.yml -p target/batch-demo-0-SNAPSHOT.jar
+* cf logs batch-demo --recent 
+* Repeat step 4 as needed to see Batch logging.
+* cf stop batch-demo
 
 The batch job is set to run every minute:
 
-```@Scheduled(fixedDelay = 6000, initialDelay = 120000)```
+```@Scheduled(fixedDelay = 60000, initialDelay = 120000)```
 
 The initialDelay was added to prevent the scheduler from interferring with the JUnit tests.
 
